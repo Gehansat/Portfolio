@@ -444,7 +444,7 @@ const PortfolioWebsite = () => {
                       whileTap={{ scale: 0.95 }}
                     >
                       <Globe className="mr-2" size={20} />
-                      Visit Project
+                      Visit Github
                       <ExternalLink className="ml-1" size={16} />
                     </motion.a>
                   )}
