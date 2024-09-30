@@ -303,7 +303,7 @@ const PortfolioWebsite = () => {
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 1, duration: 0.8 }}
             >
-              I build things for the web
+              Passionate about building software solutions
             </motion.p>
             <motion.div
               initial={{ y: 20, opacity: 0 }}
