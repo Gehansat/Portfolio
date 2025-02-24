@@ -34,7 +34,7 @@ import {
 import Typewriter from "typewriter-effect";
 import profileImage from "./images/main.jpeg";
 import maingif from "./images/2.gif";
-import resumePDF from "./Gehan_Software_Engineer_CV.pdf";
+import resumePDF from "./Gehan_Sathushka_CV.pdf";
 
 const skills = {
   frontend: [
@@ -517,7 +517,7 @@ const PortfolioWebsite = () => {
               </p>
               <motion.a
                 href={resumePDF}
-                download="Gehan_Sathushka_Resume.pdf"
+                download="Gehan_Sathushka_CV.pdf"
                 className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
