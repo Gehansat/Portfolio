@@ -32,8 +32,8 @@ import {
   Menu,
 } from "lucide-react";
 import Typewriter from "typewriter-effect";
-import profileImage from "./images/main.jpeg";
-import maingif from "./images/2.gif";
+import profileImage from "./images/body.jpg";
+import maingif from "./images/2ndd.jpg";
 import resumePDF from "./Gehan_Software_Engineer_CV.pdf";
 
 const skills = {
@@ -425,14 +425,16 @@ const PortfolioWebsite = () => {
               Passionate about building innovative web applications
             </motion.p>
           </motion.div>
-          <div className="relative w-64 h-64 md:w-96 md:h-96 mt-4 md:mt-0">
-            <img
-              src={maingif}
-              alt="Animated GIF"
-              className="w-full h-full rounded-full"
-            />
-            <div className="absolute inset-0 bg-purple-900 opacity-50 rounded-full"></div>
-          </div>
+          <div className="relative box-border w-80 h-100 mx-auto mt-10 rounded-2xl overflow-hidden shadow-2xl hover:scale-105 transition-transform duration-500">
+  <img
+    src={maingif}
+    alt="Animated GIF"
+    className="w-full h-full object-cover"
+  />
+  <div className="absolute inset-0 bg-gradient-to-br from-purple-800 via-transparent to-indigo-800 opacity-30 mix-blend-overlay rounded-2xl"></div>
+</div>
+
+
         </section>
 
         <section id="whyHireMe" ref={sectionRefs.whyHireMe} className="py-20">
@@ -543,7 +545,7 @@ const PortfolioWebsite = () => {
                 <img
                   src={profileImage}
                   alt="Gehan Sathushka"
-                  className="rounded-2xl w-64 h-64 object-cover mx-auto shadow-lg"
+                  className="rounded-2xl w-80 h-auto object-cover mx-auto shadow-lg"
                 />
               </motion.div>
               <motion.div
