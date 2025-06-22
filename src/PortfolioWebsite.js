@@ -271,7 +271,7 @@ const PortfolioWebsite = () => {
   <div
     className={`absolute inset-0 ${
       isDarkMode
-        ? "bg-[#0e0e1c] bg-gradient-to-br from-[#0f051d] via-[#19142c] to-[#0a0a23]"
+        ? "bg-[#040413] bg-gradient-to-br from-[#0d0c1e] via-[#2b2b2c] to-[#99999b]"
         : "bg-gradient-to-br from-[#f2f4fc] via-[#dee3f2] to-[#f5f8ff]"
     } transition-all duration-500`}
   />
