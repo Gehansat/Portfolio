@@ -226,35 +226,101 @@ const PortfolioWebsite = () => {
       } font-sans overflow-hidden transition-colors duration-300`}
     >
       <style jsx global>{`
-        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
-        body {
-          font-family: "Poppins", sans-serif;
-        }
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-          font-family: "Gill Sans MT Pro Book", "Poppins", sans-serif;
-        }
+        @keyframes pulse-slow {
+  0%, 100% {
+    opacity: 0.1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.05);
+  }
+}
+.animate-pulse-slow {
+  animation: pulse-slow 12s ease-in-out infinite;
+}
+
+@keyframes glow-wave {
+  0%, 100% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(20deg) scale(1.05);
+  }
+}
+.animate-glow-wave {
+  animation: glow-wave 15s ease-in-out infinite;
+}
+
+  @keyframes glow-text {
+  0%, 100% {
+    text-shadow: 0 0 8px rgba(0, 245, 255, 0.3), 0 0 16px rgba(122, 0, 255, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 12px rgba(0, 245, 255, 0.6), 0 0 20px rgba(255, 0, 204, 0.4);
+  }
+}
+.animate-glow-text {
+  animation: glow-text 6s ease-in-out infinite;
+}
+
+
       `}</style>
-      <div className="fixed inset-0 z-0">
-        <div
-          className={`absolute inset-0 ${
-            isDarkMode
-              ? "bg-gradient-to-br from-blue-900 via-purple-900 to-gray-900"
-              : "bg-gradient-to-br from-blue-100 via-purple-100 to-gray-100"
-          } opacity-50 transition-colors duration-300`}
-        ></div>
-        <div
-          className={`absolute inset-0 ${
-            isDarkMode
-              ? 'bg-[url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 80 80%22 width=%2280%22 height=%2280%22%3E%3Ccircle cx=%2240%22 cy=%2240%22 r=%221%22 fill=%22%23fff%22 opacity=%220.3%22/%3E%3C/svg%3E")]'
-              : 'bg-[url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 80 80%22 width=%2280%22 height=%2280%22%3E%3Ccircle cx=%2240%22 cy=%2240%22 r=%221%22 fill=%22%23000%22 opacity=%220.1%22/%3E%3C/svg%3E")]'
-          } bg-repeat transition-all duration-300`}
-        ></div>
-      </div>
+      <div className="fixed inset-0 z-0 overflow-hidden">
+  {/* Background gradient + glow */}
+  <div
+    className={`absolute inset-0 ${
+      isDarkMode
+        ? "bg-[#0e0e1c] bg-gradient-to-br from-[#0f051d] via-[#19142c] to-[#0a0a23]"
+        : "bg-gradient-to-br from-[#f2f4fc] via-[#dee3f2] to-[#f5f8ff]"
+    } transition-all duration-500`}
+  />
+
+  {/* Futuristic AI mesh background SVG (animated) */}
+  <div className="absolute inset-0 opacity-20 mix-blend-screen pointer-events-none z-0">
+    <svg
+      className="w-full h-full"
+      viewBox="0 0 800 600"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <defs>
+        <linearGradient id="aiGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#00f5ff" />
+          <stop offset="100%" stopColor="#a700ff" />
+        </linearGradient>
+      </defs>
+      <path
+        fill="url(#aiGradient)"
+        d="
+          M0 300 Q 150 250 300 300 
+          T 600 300 
+          T 900 300
+        "
+        stroke="url(#aiGradient)"
+        strokeWidth="2"
+        fill="none"
+      >
+        <animate
+          attributeName="d"
+          dur="10s"
+          repeatCount="indefinite"
+          values="
+            M0 300 Q 150 250 300 300 T 600 300 T 900 300;
+            M0 300 Q 150 350 300 300 T 600 250 T 900 300;
+            M0 300 Q 150 250 300 300 T 600 300 T 900 300
+          "
+        />
+      </path>
+    </svg>
+  </div>
+
+  {/* Overlaying AI glowing panel */}
+  <div className="absolute left-1/3 top-1/4 w-96 h-96 bg-indigo-500 bg-opacity-10 backdrop-blur-2xl rounded-full blur-3xl animate-pulse-slow shadow-2xl shadow-indigo-700/30" />
+
+  {/* Right glowing arc */}
+  <div className="absolute bottom-[-150px] right-[-150px] w-[500px] h-[500px] bg-gradient-to-tr from-purple-500 to-blue-400 rounded-full blur-[160px] opacity-30 animate-glow-wave" />
+</div>
+
 
       <motion.header
         className={`fixed top-0 left-0 right-0 z-50 backdrop-filter backdrop-blur-lg transition-colors duration-300`}
@@ -386,22 +452,12 @@ const PortfolioWebsite = () => {
             transition={{ duration: 0.8 }}
             className="text-center md:text-left mb-8 md:mb-0"
           >
-            <motion.h1
-              className="text-4xl md:text-6xl font-bold mb-4"
-              initial={{ scale: 0.5, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 1, ease: "easeOut" }}
-            >
-              <span
-                className={`bg-clip-text text-transparent bg-gradient-to-r ${
-                  isDarkMode
-                    ? "from-blue-400 to-purple-500"
-                    : "from-blue-600 to-purple-700"
-                }`}
-              >
-                GEHAN SATHUSHKA
-              </span>
-            </motion.h1>
+            <h1
+  className="text-5xl md:text-6xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#00f5ff] via-[#7a00ff] to-[#ff00cc] animate-glow-text"
+>
+  GEHAN SATHUSHKA
+</h1>
+
 
             <motion.div
               initial={{ y: 20, opacity: 0 }}
